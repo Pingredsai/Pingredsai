@@ -89,3 +89,18 @@ If you're building something in this space, I'd like to hear about it.
 尤其是数据不能出设备的场景（法律、医疗、财税、制造、涉密单位）。
 
 如果你正在做这方面的东西，欢迎交流。
+
+---
+
+## 📫 联系 / Contact
+
+**邮箱**：siquhjh@gmail.com
+
+**微信**：扫码添加（请说明来意）
+
+<p align="center">
+  <img src="wechat.png" width="380" alt="微信二维码">
+</p>
+
+> 承接 **端侧 AI** 与 **本地化大模型部署** 相关的外包与咨询。
+> 也欢迎纯粹的技术交流 —— 不一定要有项目。
