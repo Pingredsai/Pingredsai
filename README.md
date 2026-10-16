@@ -1,18 +1,35 @@
 # Pingredsai
 
+I build **local-first AI systems** — models and knowledge tools that run on your own device or infrastructure.
+
+我专注 **本地优先 AI** —— 让模型和知识工具运行在用户自己的设备或内网里。
+
 ---
 
 ## 🇬🇧 English
 
-I build **on-device AI** — language models that run entirely on a phone.
-No cloud. No API keys. No data leaving the device.
+### Featured projects
 
-### Currently
+#### [LocalRAG](https://github.com/Pingredsai/local-rag) — private document Q&A
 
-**[LocalAI](https://github.com/Pingredsai/local-ai-android)** — a fully offline LLM chat app for Android
-(llama.cpp + JNI + Jetpack Compose, MIT licensed).
+A self-hosted knowledge base that answers questions from your own documents.
 
-Measured on a Google Pixel 4 (Snapdragon 855, 2019) with Qwen2.5-1.5B Q4_K_M:
+- FastAPI + Qdrant + Ollama
+- Local `bge-m3` embeddings and local LLM generation
+- Answers include source references
+- Runs without cloud AI APIs after initial setup
+- Docker Compose deployment
+- MIT licensed, `v0.1.0` verified end to end
+
+[Repository](https://github.com/Pingredsai/local-rag) · [Release](https://github.com/Pingredsai/local-rag/releases/tag/v0.1.0) · [Demo video](https://github.com/Pingredsai/local-rag/blob/main/demo/video/localrag-demo.mp4)
+
+![LocalRAG answer with sources](localrag.png)
+
+#### [LocalAI](https://github.com/Pingredsai/local-ai-android) — fully offline LLM on Android
+
+A local LLM app for Android with no `INTERNET` permission at all.
+
+Measured on a Google Pixel 4 with Qwen2.5-1.5B Q4_K_M:
 
 | Metric | Result |
 |---|---|
@@ -21,86 +38,85 @@ Measured on a Google Pixel 4 (Snapdragon 855, 2019) with Qwen2.5-1.5B Q4_K_M:
 | Memory | ~1.3 GB |
 | Network permission | **none** |
 
-The app's manifest does not request `INTERNET` at all.
-
 ### What I work on
 
-- **On-device / mobile LLM inference** — llama.cpp, GGUF, ARM optimisation
-- **Android** — Kotlin, Jetpack Compose, JNI/NDK, CMake
-- **Local & private LLM deployment** — RAG, knowledge bases, air-gapped setups
-- **Performance debugging** — and I write up what I find
+- On-device and mobile LLM inference
+- Private, self-hosted RAG and knowledge bases
+- Local model deployment for privacy-sensitive environments
+- Android, Kotlin, JNI/NDK, FastAPI, Docker
+- Performance debugging and practical engineering notes
 
-### Writing
+### Writing and contact
 
-Debugging notes from the trenches:
+I write about local AI deployment, on-device inference, and performance debugging:
 
-1. *Why Your Phone Runs LLMs 80x Slower Than It Should* — the missing `-march`
-2. *Threads on Big Cores, CPU at Full Clock — Still Slow* — ruling out scheduling and frequency scaling
-3. *Is Your Phone's LLM 37x Too Slow?* — the `-O0` build trap
+- [DEV](https://dev.to/pingredsai)
+- [Juejin](https://juejin.cn/user/1350638568746430)
 
-Read them on [DEV](https://dev.to/pingredsai).
-
-### Open to
-
-Freelance work on **on-device AI** and **local LLM integration** —
-especially where data cannot leave the device
-(legal, healthcare, finance, air-gapped environments).
-
-If you're building something in this space, I'd like to hear about it.
+I’m open to **freelance work and POCs** involving on-device AI, private RAG, local LLM deployment, and air-gapped environments.
 
 ---
 
 ## 🇨🇳 中文
 
-我专注**端侧 AI** —— 让大模型真正跑在手机上，不联网、不调 API、数据不出设备。
+### 代表项目
 
-### 当前项目
+#### [LocalRAG](https://github.com/Pingredsai/local-rag) —— 私有化文档知识库问答
 
-**[LocalAI](https://github.com/Pingredsai/local-ai-android)** —— 一个完全离线的 Android 大模型对话应用
-（llama.cpp + JNI + Jetpack Compose，MIT 开源）。
+把你的文档放进自己的服务器，让 AI 基于资料回答问题，并返回来源引用。
 
-在 Google Pixel 4（骁龙 855，2019）上用 Qwen2.5-1.5B Q4_K_M 实测：
+- FastAPI + Qdrant + Ollama
+- 本地 `bge-m3` 向量化 + 本地大模型生成
+- 回答附带来源，便于追溯
+- 初始化完成后，运行时不依赖云端 AI API
+- 支持 Docker Compose 部署
+- MIT 开源，`v0.1.0` 已完成端到端验证
+
+[项目仓库](https://github.com/Pingredsai/local-rag) · [版本发布](https://github.com/Pingredsai/local-rag/releases/tag/v0.1.0) · [演示视频](https://github.com/Pingredsai/local-rag/blob/main/demo/video/localrag-demo.mp4)
+
+![LocalRAG 回答与来源](localrag.png)
+
+#### [LocalAI](https://github.com/Pingredsai/local-ai-android) —— 完全离线的 Android 本地大模型
+
+Android 端本地运行大模型，安装包里没有申请任何联网权限。
+
+在 Google Pixel 4 上使用 Qwen2.5-1.5B Q4_K_M 实测：
 
 | 指标 | 结果 |
 |---|---|
 | 生成速度 | **18.5 tok/s** |
-| 首 token 延迟 | **52 ms** |
-| 内存占用 | ~1.3 GB |
-| 联网权限 | **无**（manifest 里根本没申请 `INTERNET`） |
+| 首 token | **52 ms** |
+| 内存 | ~1.3 GB |
+| 联网权限 | **无** |
 
 ### 我做什么
 
-- **端侧 / 移动端大模型推理** —— llama.cpp、GGUF、ARM 优化
-- **Android 开发** —— Kotlin、Jetpack Compose、JNI/NDK、CMake
-- **本地化 / 私有化 LLM 部署** —— RAG、知识库、内网隔离环境
-- **性能排查** —— 并且把过程和踩过的坑写成文章
+- 端侧 / 移动端大模型推理
+- 私有化 RAG 与本地知识库
+- 数据不能出内网的本地模型部署
+- Android、Kotlin、JNI/NDK、FastAPI、Docker
+- 性能排查与工程实践记录
 
-### 技术文章
+### 内容与联系
 
-1. 《为什么你的手机跑 LLM 比别人慢 80 倍》—— 交叉编译时缺失的 `-march`
-2. 《线程在大核、CPU 满频，为什么还是慢？》—— 用排除法否定调度与降频
-3. 《手机跑大模型慢 37 倍？检查一下这个编译选项》—— Debug 构建的 `-O0` 陷阱
+我主要写本地 AI 部署、端侧推理和性能排查相关内容：
 
-欢迎在 [掘金](https://juejin.cn/user/1350638568746430) 上阅读。
+- [掘金](https://juejin.cn/user/1350638568746430)
+- [DEV](https://dev.to/pingredsai)
 
-### 可承接
-
-承接**端侧 AI** 与**本地化大模型部署**相关的外包与咨询，
-尤其是数据不能出设备的场景（法律、医疗、财税、制造、涉密单位）。
-
-如果你正在做这方面的东西，欢迎交流。
+可承接 **端侧 AI、私有化 RAG、本地大模型部署和涉密环境交付**相关的项目、POC 与技术咨询。
 
 ---
 
-## 📫 联系 / Contact
+## 📫 Contact
 
-**邮箱**：siquhjh@gmail.com
+**Email**: siquhjh@gmail.com
 
-**微信**：扫码添加（请说明来意）
+**微信**: 扫码添加（请说明来意）
 
 <p align="center">
   <img src="wechat.png" width="380" alt="微信二维码">
 </p>
 
-> 承接 **端侧 AI** 与 **本地化大模型部署** 相关的外包与咨询。
-> 也欢迎纯粹的技术交流 —— 不一定要有项目。
+> 端侧 AI / 私有化 RAG / 本地模型部署。
+> 也欢迎纯粹的技术交流。
